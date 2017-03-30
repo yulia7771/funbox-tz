@@ -1,0 +1,70 @@
+@import ../common
+
+$component: "feeds"
+@font-face
+  font-family: Exo
+  src: url("fonts/Exo2.0-Thin.otf")
+
+.feeds
+  text-align: center
+  word-spacing: 80px
+  .title
+    font-size: 36px
+    color: #ffffff
+    word-spacing: normal
+    margin-bottom: 25px
+    font-family: Exo, sans-serif
+  .feed
+    vertical-align: bottom
+    width: 320px
+    height: 480px
+    display: inline-block
+    background: url(image-path('pic.png'))
+    position: relative
+    >.text
+      font-family: "Trebuchet MS", sans-serif
+      word-spacing: normal
+      text-align: left
+      margin-left: 50px
+      .inner
+        font-size: 16px
+        color: #666666
+        margin-top: 24px
+      .item-title
+        font-size: 48px
+        color: #000000
+        font-weight: bold
+        margin-top: 20px
+      .description
+        font-size: 24px
+        color: #000000
+        font-weight: bold
+        margin-top: 5px
+      .quantity
+        font-size: 14px
+        color: #666666
+        margin-top: 18px
+        .num
+          display: inline
+          font-weight: bold
+          color: #666666
+      .details
+        font-size: 14px
+        color: #666666
+
+    .weight
+      width: 80px
+      height: 80px
+      background: #1698d9
+      text-align: center
+      border-radius: 40px
+      position: absolute
+      right: 16px
+      bottom: 16px
+      color: #ffffff
+      .num
+        font-size: 42px
+        padding-top: 12px
+      .text
+        font-size: 21px
+        margin-top: -5px

@@ -1,0 +1,29 @@
+include ../common
+
++component('feeds')
+  .feeds
+    .title Ты сегодня покормил кота?
+    .feed
+      .text
+        .inner Сказочное заморское яство
+        .item-title Нямушка
+        .description с фуа-гра
+        .quantity
+          .num 10
+          |  порций
+        .details мышь в подарок
+        .weight
+          .num 0,5
+          .text кг
+    = ' '
+    .feed
+      .text
+        .inner Сказочное заморское яство
+        .item-title Нямушка
+        .description с рыбой
+    = ' '
+    .feed
+      .text
+        .inner Сказочное заморское яство
+        .item-title Нямушка
+        .description с курой
