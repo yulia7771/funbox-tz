@@ -6,6 +6,7 @@ const pug         = require('gulp-pug');
 const notify      = require('gulp-notify');
 const minimist    = require('minimist');
 const fs          = require('fs');
+const debug       = require('gulp-debug');
 
 const knownOptions = {
   string: 'name'
@@ -69,6 +70,7 @@ gulp.task('serve', ['pug', 'sass', 'images', 'fonts'], () => {
 
 gulp.task('sass', () => {
   return gulp.src("src/*.sass")
+    .pipe(debug({title: 'DBG sass'}))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest("dest"));
 });
@@ -81,6 +83,7 @@ global.imagePath = (image) => {
 
 gulp.task('pug', () => {
   return gulp.src("src/*.pug")
+    .pipe(debug({title: 'DBG pug'}))
     .pipe(pug({globals: ['currentComponent', 'imagePath']}).on('error', notify.onError(function (error) {
       return 'An error occurred while compiling pug.\nLook in the console for details.\n' + error;
     })))
@@ -89,6 +92,7 @@ gulp.task('pug', () => {
 
 gulp.task('images', () => {
   return gulp.src("src/**/imgs/*")
+    .pipe(debug({title: 'DBG images'}))
     .pipe(rename((path) => {
       const component = path.dirname.replace(/^components\\(.+)\\imgs$/, '$1').replace(/\\/g, '_');
       path.basename = `${component}_${path.basename}`;
@@ -99,6 +103,7 @@ gulp.task('images', () => {
 
 gulp.task('fonts', () => {
   return gulp.src("src/**/fonts/*")
+    .pipe(debug({title: 'DBG fonts'} ))
     .pipe(rename((path) => {
       path.dirname = '';
     }))

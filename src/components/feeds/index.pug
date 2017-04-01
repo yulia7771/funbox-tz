@@ -1,29 +1,26 @@
 include ../common
 
 +component('feeds')
-  .feeds
-    .title Ты сегодня покормил кота?
-    .feed
+  mixin feed(desc, num, details, weight, klass)
+    .feed(class= klass)
       .text
         .inner Сказочное заморское яство
         .item-title Нямушка
-        .description с фуа-гра
+        .description= desc
         .quantity
-          .num 10
+          .num= num
           |  порций
-        .details мышь в подарок
+        .details= details
         .weight
-          .num 0,5
+          .num= weight
           .text кг
-    = ' '
-    .feed
-      .text
-        .inner Сказочное заморское яство
-        .item-title Нямушка
-        .description с рыбой
-    = ' '
-    .feed
-      .text
-        .inner Сказочное заморское яство
-        .item-title Нямушка
-        .description с курой
+
+  .feeds
+    .inner
+      .title Ты сегодня покормил кота?
+
+      +feed("с фуа-гра", 10, "мышь в подарок", "0,5")
+      = '  '
+      +feed("с рыбой", 40, "2 мыши в подарок", 2, "selected")
+      = '  '
+      +feed("с курой", 100, "5 мышей в подарок", 5, "disabled")

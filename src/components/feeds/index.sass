@@ -6,8 +6,16 @@ $component: "feeds"
   src: url("fonts/Exo2.0-Thin.otf")
 
 .feeds
-  text-align: center
-  word-spacing: 80px
+  display: table
+  min-height: 100%
+  min-width: 100%
+
+  > .inner
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    word-spacing: 80px
+
   .title
     font-size: 36px
     color: #ffffff
@@ -21,6 +29,33 @@ $component: "feeds"
     display: inline-block
     background: url(image-path('pic.png'))
     position: relative
+
+    &:hover
+      background: url(image-path('pic-hover.png'))
+      .weight
+        background: #2ea8e6
+
+    &.selected
+      background: url(image-path('pic-selected.png'))
+      .weight
+        background: #d91667
+      &:hover
+        background: url(image-path('pic-selected-hover.png'))
+        .weight
+          background: #e62e7a
+
+    &.disabled
+      background: url(image-path('pic-disabled.png'))
+      >.text
+        color: #b3b3b3
+
+        .inner, .item-title, .description, .quantity, .quantity .num, .details
+          color: #b3b3b3
+        .weight
+          background: #b3b3b3
+
+
+
     >.text
       font-family: "Trebuchet MS", sans-serif
       word-spacing: normal
