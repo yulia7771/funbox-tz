@@ -1,26 +1,37 @@
 include ../common
 
 +component('feeds')
-  mixin feed(desc, num, details, weight, klass)
+  mixin feed(desc, num, details, weight, klass, selectedText, satisfaction)
     .feed(class= klass)
-      .text
-        .inner Сказочное заморское яство
-        .item-title Нямушка
-        .description= desc
-        .quantity
-          .num= num
-          |  порций
-        .details= details
-        .weight
-          .num= weight
-          .text кг
+      .feed-content
+        .text
+          .inner Сказочное заморское яство
+          .item-title Нямушка
+          .description= desc
+          .quantity
+            .num= num
+            |  порций
+          .details= details
+          if satisfaction
+            .details заказчик доволен
+          .weight
+            .num= weight
+            .text кг
+      .comment
+        .normal
+          | Чего сидишь? Порадуй котэ,
+          = " "
+          a(href="#") купи.
+        .selected= selectedText
+        .disabled Печалька, #{desc} закончился.
+
 
   .feeds
     .inner
       .title Ты сегодня покормил кота?
 
-      +feed("с фуа-гра", 10, "мышь в подарок", "0,5")
+      +feed("с фуа-гра", 10, "мышь в подарок", "0,5", "Печень утки разварная с артишоками.")
       = '  '
-      +feed("с рыбой", 40, "2 мыши в подарок", 2, "selected")
+      +feed("с рыбой", 40, "2 мыши в подарок", 2, "selected", "Головы щучьи с чесноком да свежайшая сёмгушка.")
       = '  '
-      +feed("с курой", 100, "5 мышей в подарок", 5, "disabled")
+      +feed("с курой", 100, "5 мышей в подарок", 5, "disabled", "Филе из цыплят с трюфелями в бульоне.", true)
