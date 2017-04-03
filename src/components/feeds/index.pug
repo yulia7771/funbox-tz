@@ -1,7 +1,7 @@
 include ../common
 
-+component('feeds')
-  mixin feed(desc, num, details, weight, klass, selectedText, satisfaction)
++component('feedContents')
+  mixin feed(desc, num, details, weight, selectedText, klass, satisfaction)
     .feed(class= klass)
       .feed-content
         .text
@@ -32,6 +32,6 @@ include ../common
 
       +feed("с фуа-гра", 10, "мышь в подарок", "0,5", "Печень утки разварная с артишоками.")
       = '  '
-      +feed("с рыбой", 40, "2 мыши в подарок", 2, "selected", "Головы щучьи с чесноком да свежайшая сёмгушка.")
+      +feed("с рыбой", 40, "2 мыши в подарок", 2, "Головы щучьи с чесноком да свежайшая сёмгушка.", "selected")
       = '  '
-      +feed("с курой", 100, "5 мышей в подарок", 5, "disabled", "Филе из цыплят с трюфелями в бульоне.", true)
+      +feed("с курой", 100, "5 мышей в подарок", 5, "Филе из цыплят с трюфелями в бульоне.", "disabled", true)

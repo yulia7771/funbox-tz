@@ -57,7 +57,7 @@ html
 });
 
 
-gulp.task('serve', ['pug', 'sass', 'images', 'fonts'], () => {
+gulp.task('serve', ['pug', 'sass', 'images', 'fonts', 'js'], () => {
   browserSync.init({
       server: "./dest"
   });
@@ -66,6 +66,7 @@ gulp.task('serve', ['pug', 'sass', 'images', 'fonts'], () => {
   gulp.watch("src/**/*.pug", ['rebuild-pug']);
   gulp.watch("src/**/imgs/*", ['copy-images']);
   gulp.watch("src/**/fonts/*", ['copy-fonts']);
+  gulp.watch("src/*.js", ['copy-js']);
 });
 
 gulp.task('sass', () => {
@@ -110,6 +111,15 @@ gulp.task('fonts', () => {
     .pipe(gulp.dest("dest/fonts"));
 });
 
+gulp.task('js', () => {
+  return gulp.src("src/*.js")
+    .pipe(debug({title: 'DBG js'} ))
+    .pipe(rename((path) => {
+      path.dirname = '';
+    }))
+    .pipe(gulp.dest("dest"));
+});
+
 const reload = (done) => {
   console.log('reload browser sync');
   browserSync.reload();
@@ -120,5 +130,6 @@ gulp.task('rebuild-sass', ['sass'], reload);
 gulp.task('rebuild-pug', ['pug'], reload);
 gulp.task('copy-images', ['images'], reload);
 gulp.task('copy-fonts', ['fonts'], reload);
+gulp.task('copy-js', ['js'], reload);
 
 gulp.task('default', ['serve']);
