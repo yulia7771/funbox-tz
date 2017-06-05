@@ -6,42 +6,44 @@ $component: "feeds"
   src: url("fonts/Exo2.0-Thin.otf")
 
 .feeds
-  display: table
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  align-content: center
   min-height: 100%
   min-width: 100%
 
-  > .inner
-    display: table-cell
-    vertical-align: middle
-    text-align: center
-    word-spacing: 80px
-
   .title
+    flex: 0 0 100%
     font-size: 36px
+    text-align: center
     color: #ffffff
-    word-spacing: normal
-    margin-bottom: 25px
     font-family: Exo, sans-serif
 
   .feed
+    flex: 0 0 320px
     vertical-align: bottom
     display: inline-block
-    word-spacing: normal
+    margin: 25px 40px 0
 
     .comment
       font-family: "Trebuchet MS", sans-serif
+      text-align: center
+
       .selected, .disabled
         display: none
 
     &:hover
       .feed-content
         background: url(image-path('pic-hover.png'))
+
         .weight
           background: #2ea8e6
 
     &.selected
       .comment
         color: #ffffff
+
         .normal
           display: none
 
@@ -50,17 +52,21 @@ $component: "feeds"
 
       .feed-content
         background: url(image-path('pic-selected.png'))
+
         .weight
           background: #d91667
+
       &:hover
         .feed-content
           background: url(image-path('pic-selected-hover.png'))
+
           .weight
             background: #e62e7a
 
     &.disabled
       .comment
         color: #ffff66
+
         .normal, .selected
           display: none
 
@@ -69,11 +75,13 @@ $component: "feeds"
 
       .feed-content
         background: url(image-path('pic-disabled.png'))
+
         >.text
           color: #b3b3b3
 
           .inner, .item-title, .description, .quantity, .quantity .num, .details
             color: #b3b3b3
+
           .weight
             background: #b3b3b3
 
@@ -81,6 +89,7 @@ $component: "feeds"
       color: #ffffff
       font-size: 13px
       margin-top: 15px
+
       a
         color: #1698d9
         text-decoration: none
@@ -101,27 +110,33 @@ $component: "feeds"
       font-family: "Trebuchet MS", sans-serif
       text-align: left
       margin-left: 50px
+
       .inner
         font-size: 16px
         color: #666666
         padding-top: 24px
+
       .item-title
         font-size: 48px
         color: #000000
         font-weight: bold
         margin-top: 5px
+
       .description
         font-size: 24px
         color: #000000
         font-weight: bold
+
       .quantity
         font-size: 14px
         color: #666666
         margin-top: 15px
+
         .num
           display: inline
           font-weight: bold
           color: #666666
+
       .details
         font-size: 14px
         color: #666666
@@ -136,9 +151,11 @@ $component: "feeds"
       right: 16px
       bottom: 16px
       color: #ffffff
+
       .num
         font-size: 42px
         padding-top: 12px
+
       .text
         font-size: 21px
         margin-top: -5px
